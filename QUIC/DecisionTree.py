@@ -6,7 +6,9 @@ from sklearn.metrics import accuracy_score, classification_report
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 
-folder_path = "../Datasets/QUIC"
+folder_path = (
+    "../Datasets/QUIC"
+)
 all_sessions = []
 labels = []
 for label in os.listdir(folder_path):
@@ -21,7 +23,7 @@ for label in os.listdir(folder_path):
                 header=None,
                 skiprows=4,
                 usecols=[0, 2, 3],
-                nrows=150,
+                nrows=450,
             )
             session_df.columns = ["Timestamp", "Packet Size", "Direction"]
 
@@ -29,52 +31,42 @@ for label in os.listdir(folder_path):
                 all_sessions.append(session_df)
                 labels.append(label)
 
+# Merge all DataFrames to one DataFrame.
 all_data = pd.concat(all_sessions, ignore_index=True)
-labels_df = pd.DataFrame({"Label": labels})
-label_mapping = {
-    "Google Doc": 0,
-    "Google Drive": 1,
-    "Google Music": 2,
-    "Google Search": 3,
-    "Youtube": 4,
-}
-labels_df["Label"] = labels_df["Label"].map(label_mapping)
-all_data = pd.concat([all_data, labels_df], axis=1)
 
-X = all_data.drop("Label", axis=1)
-y = all_data["Label"]
+# Creating a list of the time series.
+sequences = [session[["Packet Size", "Direction"]].values for session in all_sessions]
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+
+sequences_padded = pad_sequences(sequences, dtype="float32")
+sequences_padded_2d = sequences_padded.reshape(sequences_padded.shape[0], -1)
+
+import numpy as np
+
+labels = np.array(labels)
+
+from sklearn.model_selection import train_test_split
 
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.3, random_state=42
+    sequences_padded_2d, labels, test_size=0.3, random_state=42, stratify=labels
 )
-
-dt_classifiers = []
-for label_value in label_mapping.values():
-    y_train_binary = y_train == label_value
-    dt_classifier = DecisionTreeClassifier(random_state=42)
-    dt_classifier.fit(X_train, y_train_binary)
-    dt_classifiers.append(dt_classifier)
 
 from sklearn.preprocessing import LabelEncoder
 
-label_encoder = LabelEncoder()
+# Encoding the labels.
+le = LabelEncoder()
+le.fit(y_train)
+# Converting all the labels to numerical values.
+y_train_le = le.transform(y_train)
+y_test_le = le.transform(y_test)
 
-# Encode the categorical labels
-y_train_encoded = label_encoder.fit_transform(y_train)
-y_test_encoded = label_encoder.transform(y_test)
+# Initialize and train Decision Tree Classifier
+decision_tree_classifier = DecisionTreeClassifier(random_state=42)
+decision_tree_classifier.fit(X_train, y_train_le)
 
-# Make predictions on the testing data for each classifier
-y_preds = []
-for dt_classifier in dt_classifiers:
-    y_pred = dt_classifier.predict(X_test)
-    y_preds.append(y_pred)
+y_pred_le = decision_tree_classifier.predict(X_test)
 
-# Combine predictions to get the final predicted labels
-y_pred_final = [
-    max(range(len(label_mapping)), key=lambda i: y_preds[i][j])
-    for j in range(len(y_test))
-]
-
-accuracy = accuracy_score(y_test_encoded, y_pred_final)
-print(f"Accuracy: {accuracy * 100:.2f}%")
-print(classification_report(y_test_encoded, y_pred_final))
+y_pred = le.inverse_transform(y_pred_le)
+# Computing and outputting the results.
+report = classification_report(y_test, y_pred)
+print(report)
