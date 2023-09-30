@@ -5,7 +5,7 @@ from sklearn.preprocessing import MinMaxScaler
 from keras.callbacks import EarlyStopping
 from sklearn.metrics import classification_report
 
-folder_path = "/home/shalev/Public/pretraining"
+folder_path = "Datasets/QUIC"
 all_sessions = []
 labels = []
 for label in os.listdir(folder_path):

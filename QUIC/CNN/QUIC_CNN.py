@@ -4,7 +4,7 @@ import os
 from sklearn.preprocessing import MinMaxScaler
 from keras.callbacks import EarlyStopping
 
-folder_path = "/home/shalev/Public/pretraining"
+folder_path = "Datasets/QUIC"
 all_sessions = []
 labels = []
 # Going over all sessions in the QUIC data-set.
