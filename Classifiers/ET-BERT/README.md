@@ -56,10 +56,6 @@ Here's how to prepare your data:
    ```
    Modify `<path_to_ET-BERT>`, `<path_to_pretrained_model>`, `<path_to_vocab>`, and `<path_to_dataset>` as needed.
 
-### Need Help?
-If you have questions or run into issues, reach out to our team lead or use our team's communication channels.
-
-
 
 # Original README
 
