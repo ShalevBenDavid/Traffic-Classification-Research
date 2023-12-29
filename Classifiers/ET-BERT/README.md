@@ -1,3 +1,71 @@
+
+# Traffic Classification AI Model
+
+## Overview
+This is a customized ET-BERT model for classifying network traffic. We've modified it to work specifically with Time, Direction, and Length (TDL) data.
+
+## Setup Steps
+
+### Download Pretrained Model
+Before running the model, you need to download the pretrained model. Here are the steps:
+
+1. Download the pretrained model from [this link](https://drive.google.com/file/d/1r1yE34dU2W8zSqx1FkB8gCWri4DQWVtE/view?usp=sharing).
+2. Once downloaded, place the model file in the `models` directory of your project.
+
+## Data Preparation
+Here's how to prepare your data:
+
+1. **For pcap Files:**
+   - Go to the `data_process` directory.
+   - Run `dataset_generation.py`.
+     ```bash
+     python data_process/dataset_generation.py
+     ```
+   - Check that the file paths in the script are correct for your files.
+
+2. **For Text Files:**
+   - Make a DataFrame with these columns: `time`, `direction`, `length`, `label`, `flownum`.
+   - Run `etbert_text_util.py` in the same directory.
+     ```bash
+     python data_process/etbert_text_util.py
+     ```
+   - Ensure the script's file paths are set to where your DataFrame is located.
+   - In `etbert_text_util.py`, you can set the `packet_threshold` variable to define the number of packets to use from each session.
+
+## Running the Model
+1. Run `main.py` in the `data_process` directory.
+   ```bash
+   python data_process/main.py
+   ```
+
+2. Set the `PYTHONPATH` environment variable to include the path to ET-BERT. This tells Python where to find the ET-BERT module when running your scripts.
+
+   - **For Linux/macOS:**
+     ```bash
+     export PYTHONPATH="${PYTHONPATH}:/path/to/ET-BERT"
+     ```
+     Replace `/path/to/ET-BERT` with the actual path to the ET-BERT directory.
+
+   - **For Windows (PowerShell):**
+     ```powershell
+     $Env:PYTHONPATH = "$Env:PYTHONPATH;C:\path\to\ET-BERT"
+     ```
+     Replace `C:\path\to/ET-BERT` with the actual path to the ET-BERT directory. This command only sets the `PYTHONPATH` for the current PowerShell session. If you open a new session, you'll need to set it again.
+
+3. To run the model, use this command, adjusting the file paths and parameters for your setup:
+   ```bash
+   python <path_to_ET-BERT>/fine-tuning/run_classifier.py --pretrained_model_path <path_to_pretrained_model>/pretrained_model.bin --vocab_path <path_to_vocab>/encryptd_vocab.txt --train_path <path_to_dataset>/train_dataset.tsv --dev_path <path_to_dataset>/valid_dataset.tsv --test_path <path_to_dataset>/test_dataset.tsv --epochs_num 5 --batch_size 8 --embedding word --encoder transformer --mask fully_visible --seq_length 270 --learning_rate 2e-5
+   ```
+   Modify `<path_to_ET-BERT>`, `<path_to_pretrained_model>`, `<path_to_vocab>`, and `<path_to_dataset>` as needed.
+
+### Need Help?
+If you have questions or run into issues, reach out to our team lead or use our team's communication channels.
+
+
+
+# Original README
+
+
 # ET-BERT
 
 [![codebeat badge](https://codebeat.co/badges/f75fab90-6d00-44b4-bb42-d19067400243)](https://codebeat.co/projects/github-com-linwhitehat-et-bert-main)
