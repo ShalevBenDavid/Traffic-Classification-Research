@@ -1,6 +1,4 @@
 
-# Traffic Classification AI Model
-
 ## Overview
 This is a customized ET-BERT model for classifying network traffic. We've modified it to work specifically with Time, Direction, and Length (TDL) data.
 
