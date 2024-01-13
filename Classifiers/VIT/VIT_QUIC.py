@@ -42,11 +42,9 @@ seed_everything(seed)
 # If GPU is available - use it! Otherwise use CPU
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-os.makedirs('data', exist_ok=True)
-
 # Define the paths for the train/test data
-train_dir = '/home/shalev/Public/VIT/Data_JPEG_Streched/train'
-test_dir = '/home/shalev/Public/VIT/Data_JPEG_Streched/test'
+train_dir = 'QUIC_data_jpg_streched/train'
+test_dir = 'QUIC_data_jpg_streched/test'
 
 # Create lists of file paths for the train/test data
 train_list = glob.glob(os.path.join(train_dir,'*.jpg'))
