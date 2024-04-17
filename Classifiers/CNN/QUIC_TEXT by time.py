@@ -67,15 +67,15 @@ sequences = []
 labels = []
 
 for name, group in df_filtered.groupby('flownum'):
-    session_data = group[['direction', 'length', 'relative_time']].values[:30]
+    session_data = group[['direction', 'length', 'relative_time']].values
     sequences.append(session_data)
     labels.append(group['label'].iloc[0])
 
 # Convert lists to arrays
-sequences = np.array(sequences)
-print(sequences[:5])
+max_length = max(len(seq) for seq in sequences)
+padded_sequences = np.array([np.pad(seq, ((0, max_length - len(seq)), (0, 0)), mode='constant') for seq in sequences])
+sequences = padded_sequences
 labels = np.array(labels)
-
 
 
 # Encode labels
@@ -83,7 +83,7 @@ encoder = LabelEncoder()
 encoded_labels = encoder.fit_transform(labels)
 
 # Split the dataset into 70% training and 30% for testing + validation
-X_train, X_test_val, y_train, y_test_val = train_test_split(sequences, encoded_labels, test_size=0.3, random_state=42)
+X_train, X_test_val, y_train, y_test_val = train_test_split(sequences, encoded_labels, test_size=0.2, random_state=42)
 
 # Split the 30% test_val set equally into validation and test sets
 X_test, X_val, y_test, y_val = train_test_split(X_test_val, y_test_val, test_size=0.5, random_state=42)
