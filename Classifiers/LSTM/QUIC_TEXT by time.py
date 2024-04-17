@@ -65,7 +65,7 @@ sequences = []
 labels = []
 
 for name, group in df_filtered.groupby('flownum'):
-    session_data = group[['direction', 'length', 'relative_time']].values[:30]
+    session_data = group[['direction', 'length', 'relative_time']].values
     sequences.append(session_data)
     labels.append(group['label'].iloc[0])
 
