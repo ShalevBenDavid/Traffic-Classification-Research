@@ -70,30 +70,30 @@ for name, group in df_filtered.groupby('flownum'):
     labels.append(group['label'].iloc[0])
 
 # Convert lists to arrays
-sequences = np.array(sequences)
+max_length = max(len(seq) for seq in sequences)
+padded_sequences = np.array([np.pad(seq, ((0, max_length - len(seq)), (0, 0)), mode='constant') for seq in sequences])
+sequences = padded_sequences
 labels = np.array(labels)
-
 
 
 # Encode labels
 encoder = LabelEncoder()
 encoded_labels = encoder.fit_transform(labels)
-X_train, X_test, y_train, y_test = train_test_split(sequences, encoded_labels, test_size=0.2, stratify=encoded_labels, random_state=42)
 
-# Normalize features based only on the training set
+# Split the dataset into 70% training and 30% for testing + validation
+X_train, X_test_val, y_train, y_test_val = train_test_split(sequences, encoded_labels, test_size=0.2, random_state=42)
+
+# Split the 30% test_val set equally into validation and test sets
+X_test, X_val, y_test, y_val = train_test_split(X_test_val, y_test_val, test_size=0.5, random_state=42)
+
+# Normalize features
 scaler = MinMaxScaler(feature_range=(0, 1))
+X_train = scaler.fit_transform(X_train.reshape(-1, X_train.shape[-1])).reshape(X_train.shape)
+X_val = scaler.transform(X_val.reshape(-1, X_val.shape[-1])).reshape(X_val.shape)
+X_test = scaler.transform(X_test.reshape(-1, X_test.shape[-1])).reshape(X_test.shape)
+
 num_samples, num_time_steps, num_features = X_train.shape
-X_train_reshaped = X_train.reshape(-1, num_features)
-X_test_reshaped = X_test.reshape(-1, num_features)
 
-# Fit on training set, transform both training and test sets
-scaler.fit(X_train_reshaped)
-X_train_scaled = scaler.transform(X_train_reshaped).reshape(num_samples, num_time_steps, num_features)
-X_test_scaled = scaler.transform(X_test_reshaped).reshape(X_test.shape[0], num_time_steps, num_features)
-
-num_samples, num_time_steps, num_features = X_train_scaled.shape
-
-print("Building and training LSTM model...")
 
 # Define the LSTM model
 model_lstm = Sequential([
@@ -109,12 +109,11 @@ model_lstm.compile(optimizer=Adam(learning_rate=0.001),
                    metrics=['accuracy'])
 
 early_stopping = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
+model_lstm.fit(X_train, y_train, epochs=100, batch_size=16, validation_data=(X_val, y_val), callbacks=[early_stopping])
 
-# Note: Make sure X_train and X_test are scaled and reshaped appropriately before this step
-model_lstm.fit(X_train_scaled, y_train, epochs=1000, batch_size=16, validation_split=0.5, callbacks=[early_stopping])
+print("Evaluating model...")
+y_pred = model_lstm.predict(X_test)
+y_pred = np.argmax(y_pred, axis=1)
+report = classification_report(y_test, y_pred)
 
-y_pred_lstm = model_lstm.predict(X_test_scaled)
-y_pred_lstm = np.argmax(y_pred_lstm, axis=1)
-report_lstm = classification_report(y_test, y_pred_lstm)
-
-print(report_lstm)
+print(report)
