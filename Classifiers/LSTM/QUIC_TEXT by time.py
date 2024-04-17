@@ -55,7 +55,7 @@ for label in os.listdir(folder_path):
 
 all_data = pd.concat(all_sessions, ignore_index=True)
 
-num_of_packets = 30
+num_of_packets = 0
 
 # Filter sessions with at least num_of_packets packets
 df_filtered = all_data.groupby('flownum').filter(lambda x: len(x) >= num_of_packets)
