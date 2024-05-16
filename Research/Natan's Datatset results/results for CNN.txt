@@ -1,0 +1,51 @@
+QUIC PCAP:
+
+Fixed-length = 45:
+                    precision    recall  f1-score   support
+
+GoogleHangout_Chat       0.00      0.00      0.00      1744
+GoogleHangout_VoIP       0.60      0.90      0.72      6283
+Google_PlayMusic         0.51      0.55      0.53      3728
+Youtube                  0.80      0.40      0.53      3681
+
+accuracy                                     0.60     15436
+macro avg                0.47      0.46      0.44     15436
+weighted avg             0.55      0.60      0.55     15436
+
+Fixed-length = 1091:
+                    precision    recall  f1-score   support
+
+GoogleHangout_Chat       0.89      0.87      0.88      1744
+GoogleHangout_VoIP       0.94      0.94      0.94      6283
+Google_PlayMusic         0.91      0.94      0.93      3728
+Youtube                  0.90      0.89      0.90      3681
+
+accuracy                                     0.92     15436
+macro avg                0.91      0.91      0.91     15436
+weighted avg             0.92      0.92      0.92     15436
+
+FLASH:
+
+Fixed-length = 45:
+              precision    recall  f1-score   support
+
+facebook           0.00      0.00      0.00       152
+instagram          0.00      0.00      0.00        35
+tiktok             0.00      0.00      0.00       149
+youtube            0.65      1.00      0.79       623
+
+accuracy                               0.65       959
+macro avg          0.16      0.25      0.20       959
+weighted avg       0.42      0.65      0.51       959
+
+Fixed-length = 1091:
+              precision    recall  f1-score   support
+
+facebook           0.33      0.01      0.01       152
+instagra           0.00      0.00      0.00        35
+tiktok             0.00      0.00      0.00       149
+youtube            0.65      1.00      0.79       623
+
+accuracy                               0.65       959
+macro avg          0.25      0.25      0.20       959
+weighted avg       0.48      0.65      0.51       959
