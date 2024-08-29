@@ -1,0 +1,149 @@
+30:
+Test Loss: 0.11157594621181488
+Test Accuracy: 0.9668737053871155
+               precision    recall  f1-score   support
+
+   Google Doc       0.96      0.96      0.96       357
+ Google Drive       0.95      0.95      0.95       480
+ Google Music       0.98      0.94      0.96       176
+Google Search       0.99      0.99      0.99       596
+      Youtube       0.95      0.97      0.96       323
+
+     accuracy                           0.97      1932
+    macro avg       0.97      0.96      0.96      1932
+ weighted avg       0.97      0.97      0.97      1932
+
+50:
+Test Loss: 0.22930710017681122
+Test Accuracy: 0.9249482154846191
+               precision    recall  f1-score   support
+
+   Google Doc       0.94      0.86      0.90       357
+ Google Drive       0.90      0.86      0.88       480
+ Google Music       0.95      0.92      0.94       176
+Google Search       0.97      0.98      0.98       596
+      Youtube       0.85      0.99      0.91       323
+
+     accuracy                           0.92      1932
+    macro avg       0.92      0.92      0.92      1932
+ weighted avg       0.93      0.92      0.92      1932
+
+70:
+Test Loss: 0.24936991930007935
+Test Accuracy: 0.9052795171737671
+               precision    recall  f1-score   support
+
+   Google Doc       0.87      0.83      0.85       357
+ Google Drive       0.86      0.85      0.85       480
+ Google Music       0.92      0.91      0.92       176
+Google Search       0.98      0.98      0.98       596
+      Youtube       0.87      0.93      0.90       323
+
+     accuracy                           0.91      1932
+    macro avg       0.90      0.90      0.90      1932
+ weighted avg       0.91      0.91      0.91      1932
+
+90:
+Test Loss: 0.2325449436903
+Test Accuracy: 0.9285714030265808
+               precision    recall  f1-score   support
+
+   Google Doc       0.90      0.95      0.93       357
+ Google Drive       0.94      0.83      0.88       480
+ Google Music       0.82      0.93      0.87       176
+Google Search       0.99      0.98      0.99       596
+      Youtube       0.89      0.95      0.92       323
+
+     accuracy                           0.93      1932
+    macro avg       0.91      0.93      0.92      1932
+ weighted avg       0.93      0.93      0.93      1932
+
+110:
+Test Loss: 0.08672360330820084
+Test Accuracy: 0.9746376872062683
+               precision    recall  f1-score   support
+
+   Google Doc       0.99      0.99      0.99       357
+ Google Drive       0.95      0.99      0.97       480
+ Google Music       0.95      0.95      0.95       176
+Google Search       0.99      0.99      0.99       596
+      Youtube       0.97      0.93      0.95       323
+
+     accuracy                           0.97      1932
+    macro avg       0.97      0.97      0.97      1932
+ weighted avg       0.97      0.97      0.97      1932
+
+130:
+Test Loss: 0.5771169662475586
+Test Accuracy: 0.7567287683486938
+               precision    recall  f1-score   support
+
+   Google Doc       0.65      0.90      0.76       357
+ Google Drive       0.96      0.60      0.74       480
+ Google Music       0.56      0.05      0.09       176
+Google Search       0.90      0.88      0.89       596
+      Youtube       0.59      0.97      0.73       323
+
+     accuracy                           0.76      1932
+    macro avg       0.73      0.68      0.64      1932
+ weighted avg       0.79      0.76      0.73      1932
+
+150:
+Test Loss: 0.16242486238479614
+Test Accuracy: 0.954451322555542
+               precision    recall  f1-score   support
+
+   Google Doc       0.98      0.98      0.98       357
+ Google Drive       0.97      0.90      0.93       480
+ Google Music       0.91      0.93      0.92       176
+Google Search       0.99      0.99      0.99       596
+      Youtube       0.87      0.95      0.91       323
+
+     accuracy                           0.95      1932
+    macro avg       0.94      0.95      0.95      1932
+ weighted avg       0.96      0.95      0.95      1932
+
+170:
+Test Loss: 0.4183780550956726
+Test Accuracy: 0.8861283659934998
+               precision    recall  f1-score   support
+
+   Google Doc       0.94      0.81      0.87       357
+ Google Drive       0.87      0.84      0.85       480
+ Google Music       0.79      0.85      0.82       176
+Google Search       0.94      1.00      0.97       596
+      Youtube       0.81      0.86      0.84       323
+
+     accuracy                           0.89      1932
+    macro avg       0.87      0.87      0.87      1932
+ weighted avg       0.89      0.89      0.89      1932
+
+190:
+Test Loss: 0.25536733865737915
+Test Accuracy: 0.922877848148346
+               precision    recall  f1-score   support
+
+   Google Doc       0.91      0.96      0.93       357
+ Google Drive       0.98      0.83      0.90       480
+ Google Music       0.86      0.91      0.88       176
+Google Search       0.96      1.00      0.98       596
+      Youtube       0.84      0.89      0.86       323
+
+     accuracy                           0.92      1932
+    macro avg       0.91      0.92      0.91      1932
+ weighted avg       0.93      0.92      0.92      1932
+
+200:
+Test Loss: 0.2866226136684418
+Test Accuracy: 0.8871635794639587
+               precision    recall  f1-score   support
+
+   Google Doc       0.96      0.96      0.96       357
+ Google Drive       0.96      0.87      0.91       480
+ Google Music       0.55      0.89      0.68       176
+Google Search       0.99      0.98      0.99       596
+      Youtube       0.81      0.65      0.72       323
+
+     accuracy                           0.89      1932
+    macro avg       0.85      0.87      0.85      1932
+ weighted avg       0.91      0.89      0.89      1932
