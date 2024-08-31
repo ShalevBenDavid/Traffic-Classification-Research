@@ -9,7 +9,7 @@ from tensorflow.keras.layers import Dense, Conv1D, Flatten, MaxPooling1D, LSTM
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.callbacks import EarlyStopping
 
-# Set the folder path where session files are located
+# Constants and initialize variables
 folder_path = "/home/shalev/Public/pretraining"
 all_sessions = []
 labels = []
@@ -88,4 +88,5 @@ y_pred = model.predict(X_test)
 y_pred_labels = le.inverse_transform(y_pred.argmax(axis=1))
 
 # Print classification report
+print("Classification Report:")
 print(classification_report(y_test, y_pred_labels))

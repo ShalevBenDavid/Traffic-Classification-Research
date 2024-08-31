@@ -1,6 +1,7 @@
 30:
 Test Loss: 0.1970871537923813
 Test Accuracy: 0.9409937858581543
+Classification Report:
                precision    recall  f1-score   support
 
    Google Doc       0.91      0.90      0.91       357
@@ -16,6 +17,7 @@ Google Search       0.98      0.98      0.98       596
 50:
 Test Loss: 0.1758599877357483
 Test Accuracy: 0.9378882050514221
+Classification Report:
                precision    recall  f1-score   support
 
    Google Doc       0.89      0.87      0.88       357
@@ -31,6 +33,7 @@ Google Search       0.98      0.99      0.98       596
 70:
 Test Loss: 0.18552277982234955
 Test Accuracy: 0.9477225542068481
+Classification Report:
                precision    recall  f1-score   support
 
    Google Doc       0.88      0.91      0.90       357
@@ -46,6 +49,7 @@ Google Search       0.99      0.99      0.99       596
 90:
 Test Loss: 0.15653133392333984
 Test Accuracy: 0.9472049474716187
+Classification Report:
                precision    recall  f1-score   support
 
    Google Doc       0.92      0.92      0.92       357
@@ -61,6 +65,7 @@ Google Search       0.98      0.98      0.98       596
 110:
 Test Loss: 0.1228095293045044
 Test Accuracy: 0.9616976976394653
+Classification Report:
                precision    recall  f1-score   support
 
    Google Doc       0.94      0.95      0.95       357
@@ -76,6 +81,7 @@ Google Search       0.99      0.99      0.99       596
 130:
 Test Loss: 0.1299869865179062
 Test Accuracy: 0.9585921168327332
+Classification Report:
                precision    recall  f1-score   support
 
    Google Doc       0.94      0.96      0.95       357
@@ -91,6 +97,7 @@ Google Search       0.99      0.98      0.99       596
 150:
 Test Loss: 0.13365598022937775
 Test Accuracy: 0.9585921168327332
+Classification Report:
                precision    recall  f1-score   support
 
    Google Doc       0.94      0.96      0.95       357
@@ -106,6 +113,7 @@ Google Search       1.00      0.98      0.99       596
 170:
 Test Loss: 0.12361640483140945
 Test Accuracy: 0.957556962966919
+Classification Report:
                precision    recall  f1-score   support
 
    Google Doc       0.97      0.94      0.96       357
@@ -121,6 +129,7 @@ Google Search       0.99      0.99      0.99       596
 190:
 Test Loss: 0.12032930552959442
 Test Accuracy: 0.9616976976394653
+Classification Report:
                precision    recall  f1-score   support
 
    Google Doc       0.96      0.97      0.96       357
@@ -136,6 +145,7 @@ Google Search       0.99      0.99      0.99       596
 200:
 Test Loss: 0.10365451127290726
 Test Accuracy: 0.9622153043746948
+Classification Report:
                precision    recall  f1-score   support
 
    Google Doc       0.97      0.94      0.95       357
