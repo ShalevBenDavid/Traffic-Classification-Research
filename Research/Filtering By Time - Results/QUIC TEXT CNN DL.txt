@@ -1,0 +1,172 @@
+1:
+Test Loss: 0.4747828543186188
+Test Accuracy: 0.8874481320381165
+Classification Report:
+               precision    recall  f1-score   support
+
+   Google Doc       0.87      0.94      0.90       367
+ Google Drive       0.87      0.82      0.84       490
+ Google Music       0.72      0.78      0.75       174
+Google Search       0.96      0.99      0.97       574
+      Youtube       0.89      0.81      0.85       323
+
+     accuracy                           0.89      1928
+    macro avg       0.86      0.87      0.86      1928
+ weighted avg       0.89      0.89      0.89      1928
+
+2:
+Test Loss: 0.2910304665565491
+Test Accuracy: 0.9551391005516052
+Classification Report:
+               precision    recall  f1-score   support
+
+   Google Doc       0.95      0.94      0.95       366
+ Google Drive       0.92      0.94      0.93       462
+ Google Music       0.77      0.72      0.75        47
+Google Search       0.99      0.99      0.99       563
+      Youtube       0.98      0.98      0.98       323
+
+     accuracy                           0.96      1761
+    macro avg       0.92      0.91      0.92      1761
+ weighted avg       0.96      0.96      0.96      1761
+
+3:
+Test Loss: 0.2175806611776352
+Test Accuracy: 0.9751301407814026
+Classification Report:
+               precision    recall  f1-score   support
+
+   Google Doc       0.96      0.97      0.97       366
+ Google Drive       0.96      0.96      0.96       457
+ Google Music       0.88      0.75      0.81        20
+Google Search       0.99      0.99      0.99       563
+      Youtube       0.98      0.99      0.99       323
+
+     accuracy                           0.98      1729
+    macro avg       0.96      0.93      0.94      1729
+ weighted avg       0.98      0.98      0.98      1729
+
+7.5:
+Test Loss: 0.21973852813243866
+Test Accuracy: 0.9662398099899292
+Classification Report:
+               precision    recall  f1-score   support
+
+   Google Doc       0.98      0.94      0.96       366
+ Google Drive       0.95      0.98      0.96       453
+ Google Music       0.42      0.33      0.37        15
+Google Search       0.99      0.98      0.99       561
+      Youtube       0.96      0.98      0.97       323
+
+     accuracy                           0.97      1718
+    macro avg       0.86      0.84      0.85      1718
+ weighted avg       0.97      0.97      0.97      1718
+
+10:
+Test Loss: 0.2102370411157608
+Test Accuracy: 0.9442622661590576
+  Classification Report:
+               precision    recall  f1-score   support
+
+   Google Doc       0.90      0.96      0.93       366
+ Google Drive       0.95      0.90      0.92       439
+ Google Music       0.67      0.29      0.40        14
+Google Search       0.99      0.99      0.99       384
+      Youtube       0.94      0.96      0.95       322
+
+     accuracy                           0.94      1525
+    macro avg       0.89      0.82      0.84      1525
+ weighted avg       0.94      0.94      0.94      1525
+
+11:
+Test Loss: 0.2510030269622803
+Test Accuracy: 0.9245283007621765
+Classification Report:
+               precision    recall  f1-score   support
+
+   Google Doc       0.95      0.97      0.96       366
+ Google Drive       0.89      0.90      0.90       434
+ Google Music       0.50      0.14      0.22        14
+Google Search       0.98      1.00      0.99       242
+      Youtube       0.90      0.89      0.89       322
+
+     accuracy                           0.92      1378
+    macro avg       0.84      0.78      0.79      1378
+ weighted avg       0.92      0.92      0.92      1378
+
+12:
+Test Loss: 0.31992849707603455
+Test Accuracy: 0.888689398765564
+Classification Report:
+               precision    recall  f1-score   support
+
+   Google Doc       0.96      1.00      0.98       366
+ Google Drive       0.92      0.80      0.86       404
+ Google Music       0.00      0.00      0.00        14
+Google Search       0.89      1.00      0.94         8
+      Youtube       0.80      0.91      0.85       322
+
+     accuracy                           0.89      1114
+    macro avg       0.71      0.74      0.73      1114
+ weighted avg       0.89      0.89      0.88      1114
+
+13:
+Test Loss: 0.25321853160858154
+Test Accuracy: 0.9464626908302307
+Classification Report:
+               precision    recall  f1-score   support
+
+   Google Doc       0.96      1.00      0.98       366
+ Google Drive       0.96      0.92      0.94       343
+ Google Music       0.00      0.00      0.00        13
+Google Search       0.00      0.00      0.00         2
+      Youtube       0.92      0.97      0.94       322
+
+     accuracy                           0.95      1046
+    macro avg       0.57      0.58      0.57      1046
+ weighted avg       0.93      0.95      0.94      1046
+
+15:
+Test Loss: 0.1378662884235382
+Test Accuracy: 0.9708737730979919
+Classification Report:
+              precision    recall  f1-score   support
+
+  Google Doc       0.98      1.00      0.99       366
+Google Drive       0.99      0.96      0.97       329
+Google Music       0.00      0.00      0.00        13
+     Youtube       0.94      0.99      0.97       322
+
+    accuracy                           0.97      1030
+   macro avg       0.73      0.74      0.73      1030
+weighted avg       0.96      0.97      0.97      1030
+
+18:
+Test Loss: 0.13732683658599854
+Test Accuracy: 0.9793307185173035
+Classification Report:
+              precision    recall  f1-score   support
+
+  Google Doc       0.99      1.00      0.99       366
+Google Drive       0.98      0.97      0.98       324
+Google Music       0.00      0.00      0.00         5
+     Youtube       0.96      0.98      0.97       321
+
+    accuracy                           0.98      1016
+   macro avg       0.73      0.74      0.74      1016
+weighted avg       0.97      0.98      0.98      1016
+
+20:
+Test Loss: 0.1012042984366417
+Test Accuracy: 0.9831013679504395
+Classification Report:
+              precision    recall  f1-score   support
+
+  Google Doc       0.99      1.00      0.99       366
+Google Drive       0.99      0.97      0.98       316
+Google Music       0.00      0.00      0.00         4
+     Youtube       0.97      0.99      0.98       320
+
+    accuracy                           0.98      1006
+   macro avg       0.74      0.74      0.74      1006
+weighted avg       0.98      0.98      0.98      1006
