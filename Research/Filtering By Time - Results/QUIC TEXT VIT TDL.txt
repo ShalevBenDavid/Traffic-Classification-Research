@@ -142,6 +142,38 @@ Classification Report:
    macro avg       0.89      0.91      0.90      2004
 weighted avg       0.91      0.91      0.91      2004
 
+15:
+Test Loss: 0.2333
+Test Accuracy: 0.9216
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.93      0.98      0.96       380
+           1       0.94      0.86      0.90       505
+           2       0.77      0.92      0.84       192
+           3       0.97      0.95      0.96       588
+           4       0.91      0.91      0.91       339
+
+    accuracy                           0.92      2004
+   macro avg       0.90      0.92      0.91      2004
+weighted avg       0.93      0.92      0.92      2004
+
+18:
+Test Loss: 0.1631
+Test Accuracy: 0.9480
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.99      0.99      0.99       380
+           1       0.94      0.89      0.91       505
+           2       0.82      0.97      0.89       192
+           3       0.99      0.94      0.97       588
+           4       0.94      0.98      0.96       339
+
+    accuracy                           0.95      2004
+   macro avg       0.94      0.96      0.94      2004
+weighted avg       0.95      0.95      0.95      2004
+
 20:
 Test Loss: 0.1474
 Test Accuracy: 0.9529

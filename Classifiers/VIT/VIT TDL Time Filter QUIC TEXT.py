@@ -9,20 +9,22 @@ import numpy as np
 import pandas as pd
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
 import torch.optim as optim
 from linformer import Linformer
 from PIL import Image
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report
 from torch.optim.lr_scheduler import StepLR
 from torch.utils.data import DataLoader, Dataset
-from torchvision import datasets, transforms
+from torchvision import transforms
 from tqdm import tqdm
 from vit_pytorch.efficient import ViT
 
+os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+
 # Define the training settings (hyperparameters)
 batch_size = 64
-epochs = 20
+epochs = 100
 lr = 3e-5
 gamma = 0.7
 seed = 42
@@ -42,9 +44,11 @@ seed_everything(seed)
 # If GPU is available - use it! Otherwise use CPU
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
+os.makedirs('data', exist_ok=True)
+
 # Define the paths for the train/test data
-train_dir = 'QUIC_data_jpg_streched/train'
-test_dir = 'QUIC_data_jpg_streched/test'
+train_dir = '/home/shalev/Public/VIT/Data/QUIC_TEXT_JPG_224/1sec/train'
+test_dir = '/home/shalev/Public/VIT/Data/QUIC_TEXT_JPG_224/1sec/test'
 
 # Create lists of file paths for the train/test data
 train_list = glob.glob(os.path.join(train_dir,'*.jpg'))
@@ -124,7 +128,8 @@ class MyDataset(Dataset):
 
         # Extract the label from the filename
         label = img_path.split("/")[-1].split("_")[0]
-        labels = ['HangoutChat','HangoutVoIP','PlayMusic','YouTube']
+        #labels = ['HangoutChat','HangoutVoIP','PlayMusic','YouTube']
+        labels = ['0','1','2','3','4']
         # Get label's index
         label = labels.index(label)
 
@@ -146,7 +151,7 @@ print(len(valid_data), len(valid_loader))
 # Define a Linformer transformer
 efficient_transformer = Linformer(
     dim=128,
-    seq_len=49+1,  # 7x7 patches + 1 cls-token
+    seq_len=100+1,  # 7x7 patches + 1 cls-token
     depth=12,
     heads=8,
     k=64
@@ -157,7 +162,7 @@ model = ViT(
     dim=128,
     image_size=224,
     patch_size=32,
-    num_classes=4,
+    num_classes=5,
     transformer=efficient_transformer,
     channels=3,
 ).to(device)
@@ -209,9 +214,9 @@ for epoch in range(epochs):
     )
 
 # Test on the test set using test_loader
+epoch_test_accuracy = 0
+epoch_test_loss = 0
 with torch.no_grad():
-    epoch_test_accuracy = 0
-    epoch_test_loss = 0
     for data, label in test_loader:
         data = data.to(device)
         label = label.to(device)
@@ -246,7 +251,7 @@ for inputs, labels in test_loader:
         y_true.extend(labels)
 
 # Constant for classes
-classes = ['HangoutChat','HangoutVoIP','PlayMusic','YouTube']
+classes = ['0','1','2','3','4']
 
 # Build confusion matrix
 cf_matrix = confusion_matrix(y_true, y_pred)
@@ -255,3 +260,12 @@ df_cm = pd.DataFrame(cf_matrix / np.sum(cf_matrix, axis=1)[:, None], index = [i 
 plt.figure(figsize = (12,7))
 sns.heatmap(df_cm, annot=True)
 plt.show()
+
+# Calculate the classification report
+classification_rep = classification_report(y_true, y_pred, target_names=classes)
+
+# Print accuracy, loss, and classification report
+print(f"Test Loss: {epoch_test_loss:.4f}")
+print(f"Test Accuracy: {epoch_test_accuracy:.4f}")
+print("Classification Report:")
+print(classification_rep)
